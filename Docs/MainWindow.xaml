@@ -1,0 +1,46 @@
+﻿<Window x:Class="Docs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Docs"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600">
+    <Grid DataContext="{Binding MWV}">
+        <Grid Margin="5,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="30pt"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120pt"/>
+                <ColumnDefinition Width="250pt"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="ФИО Студента" Grid.Column="0" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Name}" Grid.Column="1" Grid.Row="1" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Группа" Grid.Column="0" Grid.Row="2" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Group}" Grid.Column="1" Grid.Row="2" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Номер курса" Grid.Column="0" Grid.Row="3" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Course}" Grid.Column="1" Grid.Row="3" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Направление" Grid.Column="0" Grid.Row="4" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding FieldOfStudy}" Grid.Column="1" Grid.Row="4" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Дисциплина" Grid.Column="0" Grid.Row="5" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Discipline}" Grid.Column="1" Grid.Row="5" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Тема" Grid.Column="0" Grid.Row="6" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Theme}" Grid.Column="1" Grid.Row="6" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Преподаватель" Grid.Column="0" Grid.Row="7" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Teacher}" Grid.Column="1" Grid.Row="7" Margin="5,5,0,0"></TextBox>
+            <Button Content="Создать файл"  Margin="0,0,0,0" Grid.Row="8" VerticalAlignment="center" HorizontalAlignment="Stretch" Click="Button_CalculateFile"/>
+
+        </Grid>
+    </Grid>
+</Window>

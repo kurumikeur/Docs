@@ -27,6 +27,24 @@ namespace Docs
 
         }
 
+        private void Button_AppendController(object sender, RoutedEventArgs e)
+        {
+            string func = ((Button)sender).Tag as string;
+            switch (func)
+            {
+                case "AddNew":
+                    MWV.AddNewAppend();
+                    break;
+                case "DeleteAll":
+                    MWV.DeleteAllAppend();
+                    break;
+                case "Delete":
+                    MWV.DeleteAppend(((FrameworkElement)e.Source).DataContext);
+                    break;
+                default:
+                    return;
+            }
+        }
         private void Button_CalculateFile(object sender, RoutedEventArgs e)
         {
             MWV.CalculateDoc();

@@ -5,11 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Docs"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="MainWindow" Height="600" Width="900">
     <Grid DataContext="{Binding MWV}">
-        <Grid Margin="5,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="320pt" Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="5,5,0,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15pt"/>
+                <RowDefinition Height="30pt"/>
                 <RowDefinition Height="30pt"/>
                 <RowDefinition Height="30pt"/>
                 <RowDefinition Height="30pt"/>
@@ -22,7 +30,6 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120pt"/>
-                <ColumnDefinition Width="250pt"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="ФИО Студента" Grid.Column="0" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
@@ -37,10 +44,57 @@
             <TextBox Text="{Binding Discipline}" Grid.Column="1" Grid.Row="5" Margin="5,5,0,0"></TextBox>
             <TextBlock Text="Тема" Grid.Column="0" Grid.Row="6" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
             <TextBox Text="{Binding Theme}" Grid.Column="1" Grid.Row="6" Margin="5,5,0,0"></TextBox>
-            <TextBlock Text="Преподаватель" Grid.Column="0" Grid.Row="7" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
-            <TextBox Text="{Binding Teacher}" Grid.Column="1" Grid.Row="7" Margin="5,5,0,0"></TextBox>
-            <Button Content="Создать файл"  Margin="0,0,0,0" Grid.Row="8" VerticalAlignment="center" HorizontalAlignment="Stretch" Click="Button_CalculateFile"/>
+            <TextBlock Text="Тело" Grid.Column="0" Grid.Row="7" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding DocumentBody}" Grid.Column="1" Grid.Row="7" Margin="5,5,0,0"></TextBox>
+            <TextBlock Text="Преподаватель" Grid.Column="0" Grid.Row="8" TextAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBox Text="{Binding Teacher}" Grid.Column="1" Grid.Row="8" Margin="5,5,0,0"></TextBox>
+            
+            
+            <Button Content="Создать файл"  Height="40" Margin="0,0,0,0" Grid.Row="10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Click="Button_CalculateFile"/>
 
         </Grid>
+        <Grid Grid.Column="1" Margin="5,5,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20pt"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40pt"/>
+            </Grid.RowDefinitions>
+            <TextBlock>Приложения</TextBlock>
+            <ListBox Grid.Row="1" ItemsSource="{Binding AppendList}" HorizontalContentAlignment="Stretch" d:ItemsSource="{d:SampleData}" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <Grid MinHeight="120pt" Height="auto" Width="auto" Margin="5,5,5,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="25pt"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80pt"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0"> Приложение <Run Text="{Binding n}"/> </TextBlock>
+                                <TextBlock Grid.Row="1"> Заголовок </TextBlock>
+                                <TextBlock Grid.Row="2"> Текст </TextBlock>
+                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Margin="5,0,0,5"></TextBox>
+                                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Body}" Margin="5,0,0,5"></TextBox>
+                                <Button Content="Удалить" Click="Button_AppendController" Tag="Delete" Margin="5" Grid.Column="0" VerticalAlignment="Stretch" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Удалить все приложения" Click="Button_AppendController" Tag="DeleteAll" Grid.Column="0" Height="40" Margin="0,0,5,0" Grid.Row="10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+                <Button Content="Добавить приложение" Click="Button_AppendController" Tag="AddNew" Grid.Column="1" Height="40" Margin="5,0,0,0" Grid.Row="10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Grid>
+        
     </Grid>
 </Window>

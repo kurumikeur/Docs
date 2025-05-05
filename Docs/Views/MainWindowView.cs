@@ -116,8 +116,11 @@ namespace Docs.Views
             Paragraph selectedParagraph = null;
             Paragraph bodyAppendParagraph = new Paragraph();
             Run bodyAppendRun = bodyAppendParagraph.AppendChild(new Run());
-            bodyAppendRun.AppendChild(new Break());
-            bodyAppendRun.AppendChild(new Text("Приложения: "));
+            if (appendList.Count() != 0)
+            {
+                bodyAppendRun.AppendChild(new Break());
+                bodyAppendRun.AppendChild(new Text("Приложения: "));
+            }
             foreach (var paragraph in savedDoc.MainDocumentPart.Document.Body.Elements<Paragraph>())
             {
                 if (paragraph.InnerText.Contains("{DOC_BODY}"))
